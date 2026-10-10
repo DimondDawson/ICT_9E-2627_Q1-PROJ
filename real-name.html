@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prove Yourself</title>
+    <link rel="stylesheet" href="styles_Q1Project.css">
+        <style>
+        @font-face {
+            font-family: 'Open Sans';
+            src: url('fonts/OpenSans-Regular.woff') format('woff');
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Open Sans Bold';
+            src: url('fonts/OpenSans-Bold.woff') format('woff');
+            font-weight: 700;
+            font-style: normal;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 40px;
+            background: #f5f9ff;
+            color: #17324d;
+        }
+
+        .card {
+            max-width: 700px;
+            margin: auto;
+            background: white;
+            border: 1px solid #d7e3ec;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 12px 28px rgba(8, 43, 87, 0.12);
+        }
+
+        h1 {
+            margin-top: 0;
+            font-family: 'Open Sans Bold', sans-serif;
+        }
+
+        dl {
+            display: grid;
+            grid-template-columns: 220px 1fr;
+            gap: 12px 20px;
+        }
+
+        dt {
+            font-weight: 700;
+            font-family: 'Open Sans Bold', sans-serif;
+        }
+
+        dd {
+            margin: 0;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            color: #1261a0;
+            text-decoration: none;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <main class="challenge-card">
+        <h1>Prove yourself first</h1>
+        <p>Enter the password to discover my real name.</p>
+
+        <form id="password-form">
+            <label for="password">Password:</label>
+            <input type="password" id="password" required autocomplete="off">
+            <button type="submit">Reveal my name</button>
+        </form>
+
+        <p id="challenge-result" class="challenge-result" aria-live="polite"></p>
+        <a href="Q1Project.html">Back to home</a>
+    </main>
+
+    <script>
+        const correctPassword = "dymADvdu4o9txNGKz0yETAQySWLZ6msU";
+        const realName = "Arkin Rhys C. Sanchez";
+        const passwordForm = document.getElementById("password-form");
+        const passwordInput = document.getElementById("password");
+        const challengeResult = document.getElementById("challenge-result");
+
+        passwordForm.addEventListener("submit", (event) => {
+            event.preventDefault();
+
+            if (passwordInput.value === correctPassword) {
+                challengeResult.textContent = `My real name is ${realName}. If you knew the password, I probably know you.`;
+                challengeResult.style.color = "var(--lime-dark)";
+            } else {
+                challengeResult.textContent = "INCORRECT PASSWORD";
+                challengeResult.style.color = "#b42318";
+            }
+        });
+    </script>
+</body>
+</html>

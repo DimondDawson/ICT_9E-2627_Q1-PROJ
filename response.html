@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Response Summary</title>
+    <style>
+        @font-face {
+            font-family: 'Open Sans';
+            src: url('fonts/OpenSans-Regular.woff') format('woff');
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Open Sans Bold';
+            src: url('fonts/OpenSans-Bold.woff') format('woff');
+            font-weight: 700;
+            font-style: normal;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 40px;
+            background: #f5f9ff;
+            color: #17324d;
+        }
+
+        .card {
+            max-width: 700px;
+            margin: auto;
+            background: white;
+            border: 1px solid #d7e3ec;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 12px 28px rgba(8, 43, 87, 0.12);
+        }
+
+        h1 {
+            margin-top: 0;
+            font-family: 'Open Sans Bold', sans-serif;
+        }
+
+        dl {
+            display: grid;
+            grid-template-columns: 220px 1fr;
+            gap: 12px 20px;
+        }
+
+        dt {
+            font-weight: 700;
+            font-family: 'Open Sans Bold', sans-serif;
+        }
+
+        dd {
+            margin: 0;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            color: #1261a0;
+            text-decoration: none;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Submission Summary</h1>
+        <dl id="response-data"></dl>
+        <a href="Q1Project.html">Back to home</a>
+    </div>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const responseList = document.getElementById("response-data");
+
+        const fields = [
+            ["Name", "name"],
+            ["Email", "email"],
+            ["How did you find me?", "found"],
+            ["Other detail", "other-detail"],
+            ["Interest", "interest"],
+            ["Portfolio rating", "rating"],
+            ["What could be improved?", "rating-feedback"],
+            ["Willing to collaborate?", "collaborate"],
+            ["Request", "message"]
+        ];
+
+        fields.forEach(([label, key]) => {
+            const value = params.get(key);
+            if (!value) return;
+
+            const dt = document.createElement("dt");
+            dt.textContent = label;
+
+            const dd = document.createElement("dd");
+            dd.textContent = value;
+
+            responseList.appendChild(dt);
+            responseList.appendChild(dd);
+        });
+
+        if (!responseList.children.length) {
+            responseList.innerHTML = "<dt>No response data found.</dt>";
+        }
+    </script>
+</body>
+</html>
